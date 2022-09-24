@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
+import Classes.Book;
+import Classes.BookArray;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -17,7 +19,9 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/BookServlet"})
 public class BookServlet extends HttpServlet {
-
+  Book book;
+    BookArray registerBook;
+    StringBuffer objetoRespuesta = new StringBuffer();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,15 +36,26 @@ public class BookServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet BookServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet BookServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+           registerBook= new BookArray();
+                           String control = request.getParameter("control");
+
+                           if(control.toUpperCase().equals("GUARDAR")){
+                                    book = new Book(
+                                             Integer.parseInt(request.getParameter("codeBook")),
+                                             request.getParameter("nameBook"),
+                                            request.getParameter("tapeBook"),
+                                            request.getParameter("editorialBook"),
+                                            request.getParameter("dateBook")
+                                    );
+                                             registerBook.saveBook(book);
+                           }
+                           else if(control.toUpperCase().equals("DELETE")){
+                                    int codeDelete = Integer.parseInt(request.getParameter("book_code"));
+                                    registerBook.deleteBook(codeDelete);
+                           }
+                           registerBook.getBook(objetoRespuesta);
+                        out.write(objetoRespuesta.toString());
+
         }
     }
 
