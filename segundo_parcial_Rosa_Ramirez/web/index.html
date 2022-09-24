@@ -29,27 +29,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <h2>Registrar Libros</h2>
             <form   method="POST"  id="form" name="form" action="ClientController">
                  <input type="hidden" name="control" value="GUARDAR">
+                 
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
-                    <label for="code" id="codeHelp">Código</label>
+                    <label for="codeBook" id="codeHelp">Código</label>
                     <input type="text" class="form-control" placeholder="Código" id="codeBook" name="codeBook" required>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="name" id="nameHelp">Nombre del Libro</label>
+                    <label for="nameBook">Nombre del Libro</label>
                     <input type="Text" class="form-control" placeholder="Nombre y apellido" id="nameBook" name="nameBook" required>
                 </div>
                  
                  <div class="col-md-3 mb-3">
-                <label for="validationCustom02">Tipo de Pasta</label>
+                <label for="bookTape">Tipo de Pasta</label>
                 <select class="custom-select" name="bookTape" id="bookTape" required>
                   <option selected disabled value="">Choose...</option>
                   <option>Rústica</option>
                   <option>Tapa Dura</option>
                 </select>
               </div>
+               
+                  <div class="form-group">
+                    <label for="editorialBook" id="nameHelp">Editorial</label>
+                    <input type="Text" class="form-control" placeholder="Editorial" id="editorialBook" name="editorialBook" required>
+                </div>
                  
+                <div class="col-md-3 mb-3">
+                        <label for="dateBook">Año de publicación</label>
+                        <input type="date" class="form-control" id="dateBook" name="dateBook" required>
+              </div>                 
                 <button type="submit" class="btn btn-success" >Enviar</button>
                 <button type="reset" class="btn btn-danger">Cancelar</button>
                 <input type="button" value="enviar formulario Opción Dos" onclick="enviarFormularioOpcionDos();" class="submit-button btn btn-success" id="btn3">
@@ -64,6 +74,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <td>Codigo de Libro</td>
                             <td>Nombre del Libro</td>
                             <td>Tipo de Pasta</td>
+                            <td>Editorial</td>
+                            <td>Año de publicación</td>
                             <td>Acción</td>
                         </tr>
                     </thead>
